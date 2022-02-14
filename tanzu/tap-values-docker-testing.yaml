@@ -1,0 +1,51 @@
+profile: light
+ceip_policy_disclosed: true # Installation fails if this is set to 'false'
+
+buildservice:
+  kp_default_repository: "index.docker.io/omocquais/build-service"
+  kp_default_repository_username: "omocquais"
+  kp_default_repository_password: "xxxxxxx"
+  tanzunet_username: "xxxxxxx"
+  tanzunet_password: "xxxxxxx"
+
+supply_chain: testing
+
+ootb_supply_chain_testing:
+  registry:
+    server: "index.docker.io"
+    repository: "omocquais"
+  gitops:
+    ssh_secret: ""
+
+tap_gui:
+  service_type: ClusterIP
+  ingressEnabled: "true"
+  ingressDomain: "minikube"
+  app_config:
+    app:
+      baseUrl: http://tap-gui.minikube
+    catalog:
+      locations:
+        - type: url
+          target: https://github.com/franktylerva/tap-gui-yelb-catalog/blob/main/catalog-info.yaml
+    backend:
+      baseUrl: http://tap-gui.minikube
+      cors:
+        origin: http://tap-gui.minikube
+
+#metadata_store:
+#  app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
+
+metadata_store:
+  app_service_type: NodePort # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
+
+cnrs:
+  provider: local
+  domain_name: minikube
+  # ingress:
+  #   reuse_crds: "true"
+
+contour:
+ envoy:
+  service:
+   type: LoadBalancer
