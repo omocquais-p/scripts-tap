@@ -9,9 +9,8 @@
     ./setupDeveloperNS.sh demo-apps ./tanzu/tekton-pipeline.yaml
 
 ## TESTING supply chain - with Harbor - create workload
-    ./createWorkloadWithTests.sh demo-app demo-react-apps https://github.com/omocquais-p/react-app master
-    ./createWorkloadWithTests.sh demo-hello-app demo-apps https://github.com/omocquais-p/demo-hello-world master
-
+    ./createWorkloadWithTests.sh demo-app demo-react-apps master https://github.com/omocquais-p/react-app 
+    ./createWorkloadWithTests.sh demo-hello-app demo-apps master https://github.com/omocquais-p/demo-hello-world
 
 # BASIC supply chain
 
