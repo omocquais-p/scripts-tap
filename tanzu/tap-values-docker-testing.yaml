@@ -17,6 +17,14 @@ ootb_supply_chain_testing:
   gitops:
     ssh_secret: ""
 
+ootb_supply_chain_basic:
+  service_account: default
+  registry:
+    server: "index.docker.io"
+    repository: "omocquais"
+  gitops:
+    ssh_secret: ""
+
 tap_gui:
   service_type: ClusterIP
   ingressEnabled: "true"
