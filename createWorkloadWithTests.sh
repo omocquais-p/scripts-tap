@@ -8,7 +8,7 @@ GIT_BRANCH_NAME=${3:-"main"}
 GIT_REPO=${4:-"https://github.com/sample-accelerators/tanzu-java-web-app"}
 
 echo "create workload for TESTING Supply Chain"
-echo "$WORKLOAD_NAME $WORKLOAD_NAMESPACE $GIT_BRANCH_NAME $   "
+echo "$WORKLOAD_NAME $WORKLOAD_NAMESPACE $GIT_BRANCH_NAME $GIT_REPO "
 
 tanzu apps workload create "$WORKLOAD_NAME" \
   --git-repo $GIT_REPO \

@@ -10,7 +10,7 @@
     ./setupDeveloperNS.sh demo-react-apps ./tanzu/tekton-pipeline-react.yaml
 
 #### Harbor
-    ./setupDeveloperNS.sh demo-react-apps ./tanzu/harbor/tekton-pipeline-js.yaml
+    ./setupNS-harbor-with-pipeline.sh demo-react-apps ./tanzu/harbor/tekton-pipeline-js.yaml
 
 ### Create a workload (react) in TAP
     ./createWorkloadWithTests.sh demo-app demo-react-apps master https://github.com/omocquais-p/react-app
@@ -23,7 +23,7 @@
     ./setupDeveloperNS.sh demo-apps ./tanzu/tekton-pipeline.yaml
 
 #### Harbor
-    ./setupDeveloperNS.sh demo-apps ./tanzu/harbor/tekton-pipeline.yaml
+    ./setupNS-harbor-with-pipeline.sh demo-apps ./tanzu/harbor/tekton-pipeline.yaml
 
 ### Create a workload (spring boot app) in TAP 
     ./createWorkloadWithTests.sh demo-hello-app demo-apps master https://github.com/omocquais-p/demo-hello-world
