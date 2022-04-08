@@ -17,9 +17,16 @@ if [[ -z "$INSTALL_REGISTRY_HOSTNAME" ]]; then
     exit 1
 fi
 
-# Cluster essentials
+
+# Stage 1: Download and Install the Tanzu CLI.
+
+# Tanzu directory
 TANZU_HOME_DIRECTORY=$HOME/tanzu
-PATH_TANZU_CLI_TAR_FILE=$TANZU_HOME_DIRECTORY/archives/1.0.1/tanzu-framework-darwin-amd64.tar
+
+# Tanzu CLI
+PATH_TANZU_CLI_TAR_FILE=$TANZU_HOME_DIRECTORY/archives/1.0.3/tanzu-framework-darwin-amd64.tar
+
+# Cluster essentials
 CLUSTER_ESSENTIALS_PATH=$TANZU_HOME_DIRECTORY/archives/tanzu-cluster-essentials-darwin-amd64-1.0.0.tgz
 
 export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:82dfaf70656b54dcba0d4def85ccae1578ff27054e7533d08320244af7fb0343
