@@ -10,15 +10,15 @@ tanzu package installed list -A
 echo
 
 echo "kubectl get pkgi tap -n $TAP_NAMESPACE -oyaml"
-kubectl get pkgi tap -n "$TAP_NAMESPACE" -oyaml
+kubectl get pkgi tap -n "$TAP_NAMESPACE" -o yaml
 
 echo
 
 echo "kubectl get pkgi contour -n $TAP_NAMESPACE -oyaml"
-kubectl get pkgi contour -n "$TAP_NAMESPACE" -oyaml
+kubectl get pkgi contour -n "$TAP_NAMESPACE" -o yaml
 
 echo
 
 echo
 echo "kubectl get pkgi buildservice -n $TAP_NAMESPACE -oyaml"
-kubectl get pkgi buildservice -n "$TAP_NAMESPACE" -oyaml
+kubectl get pkgi buildservice -n "$TAP_NAMESPACE" -o yaml

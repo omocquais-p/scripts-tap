@@ -4,8 +4,8 @@ set -e
 
 # Stage 1: Download and Install the Tanzu CLI.
 
-TAP_VERSION=1.0.3
-TANZU_CLI_VERSION=v0.11.1
+TAP_VERSION=1.1.0
+TANZU_CLI_VERSION=v0.11.2
 
 echo "TAP_VERSION:$TAP_VERSION TANZU_CLI_VERSION:$TANZU_CLI_VERSION"
 
@@ -27,7 +27,7 @@ rm -rf ~/Library/Application\ Support/tanzu-cli/* # Remove plug-ins
 echo "Clean install Tanzu CLI"
 
 echo
-tar -xvf "$PATH_TANZU_CLI_TAR_FILE" -C $HOME/tanzu
+tar -xvf "$PATH_TANZU_CLI_TAR_FILE" -C "$HOME"/tanzu
 cd "$HOME"/tanzu
 export TANZU_CLI_NO_INIT=true
 install cli/core/$TANZU_CLI_VERSION/tanzu-core-darwin_amd64 /usr/local/bin/tanzu
