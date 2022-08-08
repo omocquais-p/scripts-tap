@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export TAP_VERSION="1.1.0"
+export TAP_VERSION="1.2.0"
 export TAP_NAMESPACE="tap-install"
 export TAP_VALUES_FILE="tap-values-full.yaml"
 

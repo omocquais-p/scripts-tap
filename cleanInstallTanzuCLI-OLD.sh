@@ -27,9 +27,10 @@ TANZU_HOME_DIRECTORY=$HOME/tanzu
 PATH_TANZU_CLI_TAR_FILE=$TANZU_HOME_DIRECTORY/archives/1.0.3/tanzu-framework-darwin-amd64.tar
 
 # Cluster essentials
-CLUSTER_ESSENTIALS_PATH=$TANZU_HOME_DIRECTORY/archives/tanzu-cluster-essentials-darwin-amd64-1.0.0.tgz
+CLUSTER_ESSENTIALS_VERSION=1.1.0
+CLUSTER_ESSENTIALS_PATH=$TANZU_HOME_DIRECTORY/archives/essentials/$CLUSTER_ESSENTIALS_VERSION/tanzu-cluster-essentials-darwin-amd64-$CLUSTER_ESSENTIALS_VERSION.tgz
 
-export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:82dfaf70656b54dcba0d4def85ccae1578ff27054e7533d08320244af7fb0343
+export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:ab0a3539da241a6ea59c75c0743e9058511d7c56312ea3906178ec0f3491f51d
 
 rm -rf "$HOME"/tanzu-cluster-essentials
 
