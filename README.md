@@ -9,6 +9,9 @@
 ## Tanzu CLI Installation
     ./Stage1-cleanInstallTanzuCLI.sh
 
+## Install Cluster Essentials
+    ./Stage3-installClusterEssentials.sh
+
 ## Create the namespace (used by grype defined in the tap-values.yaml file)
     kubectl create ns demo-app
     ./Stage4-installTAP.sh
