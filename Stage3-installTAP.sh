@@ -1,9 +1,9 @@
 # Create Tanzu Application Platform Install Environment Variables
-export TAP_VERSION="1.2.0"
+export TAP_VERSION="1.3.0"
 export TAP_NAMESPACE="tap-install"
-export TAP_VALUES_FILE="tap-values-full.yaml"
+export TAP_VALUES_FILE="tap-values.yaml"
 
-TAP_VALUES_PATH=$HOME/tanzu/$TAP_VALUES_FILE
+TAP_VALUES_PATH=$HOME/tanzu/tap-values/$TAP_VERSION/$TAP_VALUES_FILE
 
 if [[ -z "$DH_USERNAME" ]]; then
     echo "Must provide DH_USERNAME in environment" 1>&2

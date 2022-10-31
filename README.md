@@ -1,4 +1,6 @@
-# TAP 1.1
+# TAP 1.3
+
+This document describes how to install TAP 1.3 and how to deploy a simple back-end application (Java / Spring boot application) and a simple web application (React) with the Basic supply chain from Tanzu Application Platform (TAP 1.3).
 
 ## Clone the GitHub repository:
     https://github.com/omocquais-p/scripts-tap
@@ -10,20 +12,33 @@
     ./Stage1-cleanInstallTanzuCLI.sh
 
 ## Install Cluster Essentials
-    ./Stage3-installClusterEssentials.sh
+    ./Stage2-installClusterEssentials.sh
 
-## Create the namespace (used by grype defined in the tap-values.yaml file)
-    kubectl create ns demo-app
-    ./Stage4-installTAP.sh
+## Install TAP 
+    ./Stage3-installTAP.sh
 
 ## You can check the installation by running this command:
-    helpers/checkTAPInstallation.sh
+    ./helpers/checkTAPInstallation.sh
 
-## Create the Developer Namespace 
-    ./Stage5-DeveloperNamespace.sh demo-tap-be
+## Create the Developer Namespace (Back-End) 
+    ./Stage4-DeveloperNamespace.sh demo-tap-be
 
-## Create the pipeline
-    ./Stage6-Deploy-pipeline.sh demo-tap-be
+## Deploy the workload (Back-End)
+    ./Stage5-Deploy-Workload.sh api demo-tap-be master https://github.com/omocquais-p/demo-tap-be
 
-## Deploy the workload
-    ./Stage7-Deploy-Workload.sh api demo-tap-be master https://github.com/omocquais-p/demo-tap-be
+### Get external IP address (envoy) 
+    kubectl get service envoy -n tanzu-system-ingress
+    NAME    TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                      AGE
+    envoy   LoadBalancer   10.48.14.176   xx.xx.xx.xx   80:32385/TCP,443:32226/TCP   2d21h
+
+### Update /etc/hosts with the external IP address (envoy)
+    xx.xx.xx.xx tap-gui.gke.tap.io api.demo-tap-be.gke.tap.io
+
+## Create the Developer Namespace (Front-End)
+    ./Stage4-DeveloperNamespace.sh demo-tap-fe
+
+## Deploy the workload (Front-End)
+    ./Stage5-Deploy-Workload.sh web demo-tap-fe master https://github.com/omocquais-p/demo-tap-fe
+
+### Update /etc/hosts
+    xx.xx.xx.xx tap-gui.gke.tap.io api.demo-tap-be.gke.tap.io web.demo-tap-fe.gke.tap.io

@@ -1,0 +1,63 @@
+# Can take iterate, build, run, view.
+profile: full
+# Always at true (has to do with customer experience program)
+ceip_policy_disclosed: true
+# Values needed by multiple packages
+shared:
+  ingress_domain: 'gke.tap.io'
+  image_registry:
+    project_path: "index.docker.io/DOCKER_HUB_USERNAME"
+    username: "DOCKER_HUB_USERNAME"
+    password: "DOCKER_HUB_TOKEN"
+# Values for buildservice
+buildservice:
+  kp_default_repository: "index.docker.io/DOCKER_HUB_USERNAME/build-service-local"
+  kp_default_repository_username: "DOCKER_HUB_USERNAME"
+  kp_default_repository_password: "DOCKER_HUB_TOKEN"
+  tanzunet_username: "TANZUNET_USERNAME"
+  tanzunet_password: "TANZUNET_PASSWORD"
+# Can take testing, testing_scanning.
+supply_chain: basic
+# Name below changes according to what you chose in supply_chain
+ootb_supply_chain_basic:
+  registry:
+    server: "index.docker.io"
+    repository: "DOCKER_HUB_USERNAME"
+  gitops:
+    ssh_secret: ""
+
+tap_gui:
+  # If the shared.ingress_domain is set as above, this must be set to ClusterIP.
+  service_type: ClusterIP
+  app_config:
+    app:
+      baseUrl: http://tap-gui.gke.tap.io
+    integrations:
+      github:
+        - host: github.com
+          token: GITHUB_TOKEN
+    auth:
+      providers:
+        github:
+          development:
+            clientId: GITHUB_CLIENT_ID
+            clientSecret: GITHUB_CLIENT_SECRET
+    catalog:
+      rules:
+        - allow: [ Component, Domain, System, API, Group, User, Resource, Location, Template ]
+      locations:
+        - type: url
+          target: https://github.com/omocquais-p/tap-catalog/blob/main/catalog-info.yaml
+    backend:
+      baseUrl: http://tap-gui.gke.tap.io
+      cors:
+        origin: http://tap-gui.gke.tap.io
+
+metadata_store:
+  app_service_type: LoadBalancer
+
+grype:
+  targetImagePullSecret: "tap-registry"
+
+excluded_packages:
+  - policy.apps.tanzu.vmware.com

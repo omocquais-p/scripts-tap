@@ -25,7 +25,7 @@ rm -rf "$HOME"/tanzu-cluster-essentials
 # Create a directory for these packages
 mkdir -p "$HOME"/tanzu-cluster-essentials
 
-BUNDLE_SHA=e00f33b92d418f49b1af79f42cb13d6765f1c8c731f4528dfff8343af042dc3e
+BUNDLE_SHA=54bf611711923dccd7c7f10603c846782b90644d48f1cb570b43a082d18e23b9
 
 # Define environment variables nesessary for the install scripts
 export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:$BUNDLE_SHA
@@ -34,7 +34,7 @@ export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster
 TANZU_HOME_DIRECTORY=$HOME/tanzu
 
 # Cluster essentials
-CLUSTER_ESSENTIALS_VERSION=1.2.0
+CLUSTER_ESSENTIALS_VERSION=1.3.0
 CLUSTER_ESSENTIALS_PATH=$TANZU_HOME_DIRECTORY/archives/essentials/$CLUSTER_ESSENTIALS_VERSION/tanzu-cluster-essentials-darwin-amd64-$CLUSTER_ESSENTIALS_VERSION.tgz
 
 # Unpack the TAR file into the tanzu-cluster-essentials directory by running:
