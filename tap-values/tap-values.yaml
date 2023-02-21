@@ -1,37 +1,46 @@
-# Can take iterate, build, run, view.
-profile: full
-# Always at true (has to do with customer experience program)
-ceip_policy_disclosed: true
-# Values needed by multiple packages
 shared:
   ingress_domain: 'gke.tap.io'
   image_registry:
-    project_path: "index.docker.io/DOCKER_HUB_USERNAME"
-    username: "DOCKER_HUB_USERNAME"
-    password: "DOCKER_HUB_TOKEN"
-# Values for buildservice
-buildservice:
-  kp_default_repository: "index.docker.io/DOCKER_HUB_USERNAME/build-service-local"
-  kp_default_repository_username: "DOCKER_HUB_USERNAME"
-  kp_default_repository_password: "DOCKER_HUB_TOKEN"
-  tanzunet_username: "TANZUNET_USERNAME"
-  tanzunet_password: "TANZUNET_PASSWORD"
-# Can take testing, testing_scanning.
-supply_chain: basic
-# Name below changes according to what you chose in supply_chain
-ootb_supply_chain_basic:
+    project_path: "xxxxxxx/my-tap-registry/supply-chain"
+    username: "xxxxxxx"
+    password: |
+      {
+        xxxxxxx
+      }
+profile: full # Can take iterate, build, run, view.
+
+supply_chain: basic # Can take testing, testing_scanning.
+
+ootb_supply_chain_basic: # Based on supply_chain set above, can be changed to ootb_supply_chain_testing, ootb_supply_chain_testing_scanning.
   registry:
-    server: "index.docker.io"
-    repository: "DOCKER_HUB_USERNAME"
+    server: "xxxxxxx"
+    repository: "xxxxxxx/my-tap-registry"
   gitops:
     ssh_secret: ""
 
+# Always at true (has to do with customer experience program)
+ceip_policy_disclosed: true
+# Values needed by multiple packages
+
+contour:
+  envoy:
+    service:
+      type: LoadBalancer # This is set by default, but can be overridden by setting a different value.
+
+# Values for buildservice
+buildservice:
+  kp_default_repository: "xxxxxxx"
+  kp_default_repository_username: "xxxxxxx"
+  kp_default_repository_password: |
+    {
+      xxxxxxx
+    }
+
 tap_gui:
-  # If the shared.ingress_domain is set as above, this must be set to ClusterIP.
-  service_type: ClusterIP
+  service_type: ClusterIP # If the shared.ingress_domain is set as above, this must be set to ClusterIP.
   app_config:
     app:
-      baseUrl: http://tap-gui.gke.tap.io
+      baseUrl: https://tap-gui.gke.tap.io
     integrations:
       github:
         - host: github.com
@@ -49,12 +58,12 @@ tap_gui:
         - type: url
           target: https://github.com/omocquais-p/tap-catalog/blob/main/catalog-info.yaml
     backend:
-      baseUrl: http://tap-gui.gke.tap.io
+      baseUrl: https://tap-gui.gke.tap.io
       cors:
-        origin: http://tap-gui.gke.tap.io
+        origin: https://tap-gui.gke.tap.io
 
 metadata_store:
-  app_service_type: LoadBalancer
+  app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
 
 grype:
   targetImagePullSecret: "tap-registry"

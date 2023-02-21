@@ -1,12 +1,11 @@
-# TAP 1.3
+# TAP 1.4
 
-This document describes how to install TAP 1.3 and how to deploy a simple back-end application (Java / Spring boot application) and a simple web application (React) with the Basic supply chain from Tanzu Application Platform (TAP 1.3).
+This document describes how to install TAP 1.4 and how to deploy a simple back-end application (Java / Spring boot application) and a simple web application (React) with the Basic supply chain from Tanzu Application Platform (TAP 1.4).
 
 ## Clone the GitHub repository:
     https://github.com/omocquais-p/scripts-tap
 
-## Update the credentials in the environment.sh file and source the file
-    source environment.sh
+## Update the credentials in the env.yaml file and source the file
 
 ## Tanzu CLI Installation
     ./Stage1-cleanInstallTanzuCLI.sh
@@ -37,8 +36,10 @@ This document describes how to install TAP 1.3 and how to deploy a simple back-e
 ## Create the Developer Namespace (Front-End)
     ./Stage4-DeveloperNamespace.sh demo-tap-fe
 
+## Get the API endpoint and update the Stage6-Deploy-Workload-frontend.sh script
+
 ## Deploy the workload (Front-End)
-    ./Stage5-Deploy-Workload.sh web demo-tap-fe master https://github.com/omocquais-p/demo-tap-fe
+    ./Stage6-Deploy-Workload-frontend.sh web demo-tap-fe master https://github.com/omocquais-p/demo-tap-fe
 
 ### Update /etc/hosts
     xx.xx.xx.xx tap-gui.gke.tap.io api.demo-tap-be.gke.tap.io web.demo-tap-fe.gke.tap.io
