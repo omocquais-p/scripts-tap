@@ -42,6 +42,12 @@ TANZU_HOME_DIRECTORY=$HOME/tanzu
 CLUSTER_ESSENTIALS_VERSION=1.4.0
 CLUSTER_ESSENTIALS_PATH=$TANZU_HOME_DIRECTORY/archives/essentials/$CLUSTER_ESSENTIALS_VERSION/tanzu-cluster-essentials-darwin-amd64-$CLUSTER_ESSENTIALS_VERSION.tgz
 
+if [ -f "$CLUSTER_ESSENTIALS_PATH" ]; then
+    echo "$CLUSTER_ESSENTIALS_PATH exists."
+else
+    echo "$CLUSTER_ESSENTIALS_PATH does not exist and must be present."
+fi
+
 # Unpack the TAR file into the tanzu-cluster-essentials directory by running:
 tar -xvf "$CLUSTER_ESSENTIALS_PATH" -C "$HOME"/tanzu-cluster-essentials
 

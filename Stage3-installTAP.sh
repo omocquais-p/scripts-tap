@@ -5,6 +5,12 @@ export TAP_VALUES_FILE="tap-values.yaml"
 
 TAP_VALUES_PATH=$HOME/tanzu/tap-values/${TAP_VERSION}/${TAP_VALUES_FILE}
 
+if [ -f "$TAP_VALUES_PATH" ]; then
+    echo "$TAP_VALUES_PATH exists."
+else
+    echo "$TAP_VALUES_PATH does not exist and must be present."
+fi
+
 INSTALL_REGISTRY_USERNAME=$(yq '.settings.installRegistry.username' env.yaml)
 INSTALL_REGISTRY_PASSWORD=$(yq '.settings.installRegistry.password' env.yaml)
 INSTALL_REGISTRY_HOSTNAME=$(yq '.settings.installRegistry.hostname' env.yaml)

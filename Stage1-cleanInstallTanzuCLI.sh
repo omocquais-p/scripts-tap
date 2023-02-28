@@ -15,6 +15,12 @@ TANZU_HOME_DIRECTORY=$HOME/tanzu
 # Tanzu CLI
 PATH_TANZU_CLI_TAR_FILE=${TANZU_HOME_DIRECTORY}/archives/${TAP_VERSION}/tanzu-framework-darwin-amd64-${TANZU_CLI_VERSION}.tar
 
+if [ -f "$PATH_TANZU_CLI_TAR_FILE" ]; then
+    echo "$PATH_TANZU_CLI_TAR_FILE exists."
+else
+    echo "$PATH_TANZU_CLI_TAR_FILE does not exist and must be present."
+fi
+
 #Install or update the Tanzu CLI and plug-ins
 
 # Remove old Tanzu CLI install

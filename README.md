@@ -5,7 +5,24 @@ This document describes how to install TAP 1.4 and how to deploy a simple back-e
 ## Clone the GitHub repository:
     https://github.com/omocquais-p/scripts-tap
 
-## Update the credentials in the env.yaml file and source the file
+## Update the credentials in the env.yaml file
+    installRegistry: Tanzu Network account
+    registry: Google Artifact Registry credentials
+
+## Install yq
+    https://github.com/mikefarah/yq
+
+## Create a tanzu folder
+    TANZU_HOME_DIRECTORY=$HOME/tanzu
+
+## Download the Tanzu CLI file into the folder 
+    $TANZU_HOME_DIRECTORY/archives/1.4.0/tanzu-framework-darwin-amd64-v0.25.4.2.tar
+
+## Download the tanzu-cluster-essentials file into the folder
+    $TANZU_HOME_DIRECTORY/archives/essentials/1.4.0/tanzu-cluster-essentials-darwin-amd64-1.4.0.tgz
+
+## Create a tap-values.yaml from the tap-values/tap-values.yaml
+    $TANZU_HOME_DIRECTORY/tap-values/1.4.0/tap-values.yaml
 
 ## Tanzu CLI Installation
     ./Stage1-cleanInstallTanzuCLI.sh
